@@ -54,6 +54,7 @@ module Fleakr
       end
 
       def send # :nodoc:
+        logger = Fleakr.logger if logger.nil?
         response = Net::HTTP.start(endpoint_uri.host, endpoint_uri.port) do |http| 
           logger.info("Sending upload request to: #{endpoint_uri}")
           logger.debug("Request data:\n#{self.parameters.to_form}")
